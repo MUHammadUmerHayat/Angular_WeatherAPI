@@ -1,7 +1,7 @@
 (function(){
   var weatherapi = angular.module("windspeed", []);
   weatherapi.controller("WindSpeedCtrl", function($scope, $http){
-    $scope.default_val = function(){
+     $scope.default_val = function(){
       $scope.get_weather(6.45306 ,3.39583);
       $scope.present_reading = "Lagos, Nigeria";
       $scope.present_reading1 ="The Coordinates are ... 6.45306, 3.39583 ";
