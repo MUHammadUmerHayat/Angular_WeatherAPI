@@ -20,9 +20,11 @@
      $scope.lng = "";
      $scope.city_forecast = "";
      $scope.table_state = false;
+
      $scope.reset_function = function(){
       $scope.new_val = "";
      } 
+
      $scope.load_data = function(){
       $scope.show_value = false;
       $scope.present_reading = "";
@@ -42,8 +44,8 @@
       }
 
       $scope.get_location_data = function(){
-      var fourcast_url = "https://api.foursquare.com/v2/venues/search?near=" + $scope.new_val + "&client_id=NK2F2DN4LL5ZRKHX3QLIUULNCET5OHVX1RYKMDQQ4XY4RFFH&client_secret=00F0HEOA2VAP5XS2OIGKGOTQPM522J1G4M341BY5DQO21CTL&v=20140710";
-      $http.jsonp(fourcast_url, config).success(function(response){
+        var fourcast_url = "https://api.foursquare.com/v2/venues/search?near=" + $scope.new_val + "&client_id=NK2F2DN4LL5ZRKHX3QLIUULNCET5OHVX1RYKMDQQ4XY4RFFH&client_secret=00F0HEOA2VAP5XS2OIGKGOTQPM522J1G4M341BY5DQO21CTL&v=20140710";
+        $http.jsonp(fourcast_url, config).success(function(response){
             $scope.curr_val = response.response.geocode.feature;
             $scope.lat = $scope.curr_val.geometry.center.lat;
             $scope.lng = $scope.curr_val.geometry.center.lng;
@@ -61,8 +63,8 @@
       $scope.graph_data = [];
       $scope.graph_day = [];
       $scope.get_weather = function(val1, val2){
-      var forecast_url = "https://api.forecast.io/forecast/761080e4acfe83e078084db199ffe7c3/" + val1 + "," + val2;
-      configi = {
+        var forecast_url = "https://api.forecast.io/forecast/761080e4acfe83e078084db199ffe7c3/" + val1 + "," + val2;
+        configi = {
           params: {
                       callback: "JSON_CALLBACK"
                 }
@@ -83,8 +85,8 @@
        };
       $scope.table_state = false;
       $scope.show_more_days = function(){
-      $scope.table_state = $scope.table_state === false ? true: false;
-      $scope.angle = $scope.angle === "v" ? "ʌ" : "v";
+        $scope.table_state = $scope.table_state === false ? true: false;
+        $scope.angle = $scope.angle === "v" ? "ʌ" : "v";
       };
       // $scope.hide_table = function(){
       // $scope.table_state = false;

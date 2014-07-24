@@ -117,7 +117,21 @@ a.control_next {
 }
 @media screen and (max-width: 480px) {
   #slider ul li {
-    width:200px;
+    width:180px;
     }
   }
+@media screen and (min-width: 450px) {
+  #slider ul li {
+    width:240px;
+    }
+  }
+@media screen and (min-width: 660px) {
+  #slider ul li {
+    width:300px;
+    }
+  }
+@media screen and (min-width: 800px) {
+  #slider ul li {
+    width:370px;
+    }
   }
