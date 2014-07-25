@@ -71,13 +71,13 @@
 
       $scope.get_weather = function(val1, val2){
         var forecast_url = "https://api.forecast.io/forecast/761080e4acfe83e078084db199ffe7c3/" + val1 + "," + val2;
-        var configi = {
+        var forecast_url_config = {
           params: {
                       callback: "JSON_CALLBACK"
           }
         };
 
-      $http.jsonp(forecast_url, configi).success(function(data){
+      $http.jsonp(forecast_url, forecast_url_config).success(function(data){
             $scope.curr_temp = data.currently.temperature + "°F";
             console.log(data.currently);
             $scope.hourly = data.hourly.data;
