@@ -1,6 +1,18 @@
 (function(){
   var weatherapi = angular.module("windspeed", []);
   weatherapi.controller("WindSpeedCtrl", function($scope, $http){
+
+     $scope.curr_val = "";
+     $scope.Dis_name ="";
+     $scope.lat = "";
+     $scope.lng = "";
+     $scope.city_forecast = "";
+     $scope.table_state = false;
+     $scope.angle ="v";
+     $scope.table_state = false;
+     $scope.graph_data = [];
+     $scope.graph_day = [];
+
      $scope.default_val = function(){
       $scope.get_weather(6.45306 ,3.39583);
       $scope.present_reading = "Lagos, Nigeria";
@@ -8,18 +20,12 @@
       $scope.city_forecast =  "Lagos, Nigeria Weather Report";
             
     };
-    var config = {
+     var config = {
           params: {
                       callback: "JSON_CALLBACK"
-                }
+          }
                 
-            };
-     $scope.curr_val = "";
-     $scope.Dis_name ="";
-     $scope.lat = "";
-     $scope.lng = "";
-     $scope.city_forecast = "";
-     $scope.table_state = false;
+      };
 
      $scope.reset_function = function(){
       $scope.new_val = "";
@@ -31,16 +37,18 @@
       $scope.present_reading1 = "";
       $scope.speed = "";
       $scope.bearing = "";
+
       if(/^[a-zA-Z-, ]*$/.test($scope.new_val) == false)
        {
         $scope.reset_function();
          alert('Your search string contains illegal characters.');
        }
+
        else{
         console.log($scope.new_val);
         $scope.get_location_data();
         $scope.reset_function();
-        }
+       }
       }
 
       $scope.get_location_data = function(){
@@ -58,17 +66,16 @@
             console.log($scope.lng);
             $scope.get_weather($scope.lat, $scope.lng);
         });
+        
       };
 
-      $scope.graph_data = [];
-      $scope.graph_day = [];
       $scope.get_weather = function(val1, val2){
         var forecast_url = "https://api.forecast.io/forecast/761080e4acfe83e078084db199ffe7c3/" + val1 + "," + val2;
         configi = {
           params: {
                       callback: "JSON_CALLBACK"
-                }
-              };
+          }
+        };
 
       $http.jsonp(forecast_url, configi).success(function(data){
             $scope.curr_temp = data.currently.temperature + "°F";
@@ -83,7 +90,7 @@
         });
 
        };
-      $scope.table_state = false;
+     
       $scope.show_more_days = function(){
         $scope.table_state = $scope.table_state === false ? true: false;
         $scope.angle = $scope.angle === "v" ? "ʌ" : "v";
@@ -92,7 +99,7 @@
       // $scope.table_state = false;
 
       // };
-      $scope.angle ="v";
+      
       $scope.default_val();
      });
 })();

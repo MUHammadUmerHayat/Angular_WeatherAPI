@@ -45,7 +45,7 @@
           <li ng-repeat="h in hourly">{{(h.time * 1000) | date : 'shortTime'}}<br>{{h.temperature}}°F<br><img ng-src="img/{{h.icon}}.png" style="width:40%;height:70%;"></li>
         </ul>
       </div>
-             <h2 class="btn btn-default btn-lg" id="other_days" ng-click="show_more_days()"ng-dblclick="hide_table()">{{angle}}</h2>
+        <h2 class="btn btn-default btn-lg" id="other_days" ng-click="show_more_days()"ng-dblclick="hide_table()">{{angle}}</h2>
         <hr> 
       </div>
       <div id="more_days">
@@ -61,8 +61,8 @@
           </table>
           </div> 
     </div>
-      <footer>
-        <p id="futa">© gmt 2014</p>
-      </footer>
+    <footer>
+      <p id="futa">© gmt 2014</p>
+    </footer>
 </body>
 </html>
