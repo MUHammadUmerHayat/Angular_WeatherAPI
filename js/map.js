@@ -66,12 +66,12 @@
             console.log($scope.lng);
             $scope.get_weather($scope.lat, $scope.lng);
         });
-        
+
       };
 
       $scope.get_weather = function(val1, val2){
         var forecast_url = "https://api.forecast.io/forecast/761080e4acfe83e078084db199ffe7c3/" + val1 + "," + val2;
-        configi = {
+        var configi = {
           params: {
                       callback: "JSON_CALLBACK"
           }
