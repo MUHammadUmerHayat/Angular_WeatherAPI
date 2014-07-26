@@ -13,7 +13,6 @@
     <script src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript"  src="js/map.js"></script>
-    <script type="text/javascript" src="js/slide.js">
     </script>
 </head>
 <body ng-controller="WindSpeedCtrl">
@@ -39,11 +38,9 @@
       <div id="day">
         <h3>{{(curr_time * 1000) | date : 'EEEE'}}</h3>
         <div id="slider">
-          <a href="#" class="control_next">>></a>
-          <a href="#"class="control_prev"><<</a>
-          <ul>
-          <li ng-repeat="h in hourly">{{(h.time * 1000) | date : 'shortTime'}}<br>{{h.temperature}}°F<br><img ng-src="img/{{h.icon}}.png" style="width:40%;height:70%;"></li>
-        </ul>
+          <a href="#" class="control_next" ng-click="next()">>></a>
+          <a href="#"class="control_prev" ng-click="prev()"><<</a>
+          <div class="show_div" ng-repeat="h in hourly" ng-show="isVisible($index)">{{(h.time * 1000) | date : 'shortTime'}}<br>{{h.temperature}}°F<br><img ng-src="img/{{h.icon}}.png" style="width:40%;height:70%;"></div>
       </div>
         <h2 class="btn btn-default btn-lg" id="other_days" ng-click="show_more_days()"ng-dblclick="hide_table()">{{angle}}</h2>
         <hr> 

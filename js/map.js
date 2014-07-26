@@ -12,6 +12,9 @@
      $scope.table_state = false;
      $scope.graph_data = [];
      $scope.graph_day = [];
+     $scope.len = "";
+     $scope.curr_temp ="";
+     $scope.curr_summary ="";
 
      $scope.default_val = function(){
       $scope.get_weather(6.45306 ,3.39583);
@@ -37,6 +40,9 @@
       $scope.present_reading1 = "";
       $scope.speed = "";
       $scope.bearing = "";
+      $scope.curr_temp ="";
+      $scope.curr_summary = "";
+      $scope.hourly = "";
 
       if(/^[a-zA-Z-, ]*$/.test($scope.new_val) == false)
        {
@@ -86,6 +92,7 @@
             $scope.curr_summary = data.currently.summary;
             console.log($scope.curr_icon);
             $scope.results = data.daily.data;
+            $scope.len = $scope.hourly.length;
             
         });
 
@@ -95,11 +102,20 @@
         $scope.table_state = $scope.table_state === false ? true: false;
         $scope.angle = $scope.angle === "v" ? "ʌ" : "v";
       };
-      // $scope.hide_table = function(){
-      // $scope.table_state = false;
 
-      // };
-      
+      $scope.currentIndex = 0; 
+       
+      $scope.next = function() {
+        $scope.currentIndex < $scope.len - 1 ? $scope.currentIndex++ : $scope.currentIndex = 0;
+      };
+       
+      $scope.prev = function() {
+        $scope.currentIndex > 0 ? $scope.currentIndex-- : $scope.currentIndex = $scope.len - 1;
+      };
+
+      $scope.isVisible   = function(index){
+        return $scope.currentIndex === index;
+      };
       $scope.default_val();
      });
 })();
