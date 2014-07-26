@@ -43,6 +43,7 @@
       $scope.curr_temp ="";
       $scope.curr_summary = "";
       $scope.hourly = "";
+      $scope.curr_time = "";
 
       if(/^[a-zA-Z-, ]*$/.test($scope.new_val) == false)
        {
